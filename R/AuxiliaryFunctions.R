@@ -169,14 +169,14 @@ bam.process <- function(bam.file, pattern, short.nt.before.tag, short.nt.after.t
 #' CellTagPatternCalling("v1")
 #' 
 CellTagPatternCalling <- function(celltag.version) {
-  celltag.df <- data.frame(version = c("v1", "v2", "v3"),
-                           nt.before.tag = c("GGT", "GTGATG", "TGTACG"),
+  celltag.df <- data.frame(version = c("v1", "v2", "v3", "own"), # added "own"
+                           nt.before.tag = c("GGT", "GTGATG", "TGTACG", "NNNNNNNN"), # modified to contain our own pre-barcode seq
                            stringsAsFactors = F)
   rownames(celltag.df) <- celltag.df$version
   short.nt.before.tag <- celltag.df[celltag.version, "nt.before.tag"]
-  short.nt.after.tag <- "GAATTC"
+  short.nt.after.tag <- "GAATTC" # still to modify to contain the post-barcode seq
   
-  pattern <- paste0(short.nt.before.tag, "[ATCG]{8}", short.nt.after.tag)
+  pattern <- paste0(short.nt.before.tag, "[ATCG]{8}", short.nt.after.tag) # still to modify
   return(c(pattern, short.nt.before.tag, short.nt.after.tag))
 }
 
