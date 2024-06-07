@@ -11,9 +11,6 @@
 #' @examples
 #' fastq.process("data.fastq", "CCGGT[ATCG]{8}GAATTC", "CCGGT", "GAATTC")
 #' 
-hello <- function() {
-  print("Franzi")
-}
 
 fastq.process <- function(fastq.file, pattern, short.nt.before.tag, short.nt.after.tag) {
   con <- file(fastq.file, "r")
